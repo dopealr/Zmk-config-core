@@ -4,6 +4,7 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
+        zmk,studio-enabled;  // Added this line for ZMK Studio
     };
 
     kscan0: kscan0 {
