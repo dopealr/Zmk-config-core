@@ -1,12 +1,12 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
- / {
+/ {
     compatible = "zmk,keymap";
 
     chosen {
+        zmk,keyboard = &keyboard;
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
-        bindings = <&kscan0 &default_transform>;
     };
 
     kscan0: kscan0 {
