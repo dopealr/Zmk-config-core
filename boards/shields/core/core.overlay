@@ -8,6 +8,7 @@
         zmk,studio-enabled;  // Enables ZMK Studio support
     };
 
+    // Key scanning matrix
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
@@ -26,6 +27,7 @@
         >;
     };
 
+    // Matrix transform for the 3x3 layout
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <3>;
@@ -37,13 +39,14 @@
         >;
     };
 
-    // Assign transform and kscan to the physical layout from core-layout.dtsi
+    // Assign transform and kscan to the physical layout from core-layouts.dtsi
     &core_physical_layout {
         transform = <&default_transform>;
         kscan = <&kscan0>;
     };
 };
 
+// Optional onboard peripherals
 &pro_micro_i2c {
     status = "okay";
 };

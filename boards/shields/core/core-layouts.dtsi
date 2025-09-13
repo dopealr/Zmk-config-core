@@ -6,17 +6,16 @@
         display-name = "Core";
         transform = <&default_transform>;
         kscan = <&kscan0>;
-
-        // Define the 3x3 key positions for ZMK Studio
-        keys =
-            <&key_physical_attrs 100 100   0    0   0  0  0>
-          , <&key_physical_attrs 100 100 100    0   0  0  0>
-          , <&key_physical_attrs 100 100 200    0   0  0  0>
-          , <&key_physical_attrs 100 100   0  100   0  0  0>
-          , <&key_physical_attrs 100 100 100  100   0  0  0>
-          , <&key_physical_attrs 100 100 200  100   0  0  0>
-          , <&key_physical_attrs 100 100   0  200   0  0  0>
-          , <&key_physical_attrs 100 100 100  200   0  0  0>
-          , <&key_physical_attrs 100 100 200  200   0  0  0>;
+        keys  //                     w   h    x    y     rot    rx    ry
+            = <&key_physical_attrs 100 100    0    0       0     0     0>
+            , <&key_physical_attrs 100 100  100    0       0     0     0>
+            , <&key_physical_attrs 100 100  200    0       0     0     0>
+            , <&key_physical_attrs 100 100    0  100       0     0     0>
+            , <&key_physical_attrs 100 100  100  100       0     0     0>
+            , <&key_physical_attrs 100 100  200  100       0     0     0>
+            , <&key_physical_attrs 100 100    0  200       0     0     0>
+            , <&key_physical_attrs 100 100  100  200       0     0     0>
+            , <&key_physical_attrs 100 100  200  200       0     0     0>
+            ;
     };
 };
