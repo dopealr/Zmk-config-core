@@ -40,10 +40,10 @@
     physical_layout {
         compatible = "zmk,physical-layout";
 
-        layout = <
-            &key_00 &key_01 &key_02
-            &key_10 &key_11 &key_12
-            &key_20 &key_21 &key_22
+         layout = <
+             RC(0,0) RC(0,1) RC(0,2)
+             RC(1,0) RC(1,1) RC(1,2)
+             RC(2,0) RC(2,1) RC(2,2)
         >;
     };
 };
