@@ -1,3 +1,5 @@
+#define ZMK_BEHAVIORS_OMIT_KT
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
@@ -18,7 +20,7 @@
         layer_1 {
             bindings = <
                 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2
-                &bt BT_CLR &out OUT_TOG &zmk_studio_listen
+                &bt BT_CLR &out OUT_TOG &kp NUM_9
                 &kp C_VOL_DN &kp C_VOL_UP &to 0
             >;
         };
