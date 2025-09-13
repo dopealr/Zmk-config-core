@@ -1,6 +1,7 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include "core-layout.dtsi"
 
- / {
+/ {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
@@ -36,17 +37,10 @@
         >;
     };
 
-    // ✅ Add physical layout section for ZMK Studio:
-    physical_layout {
-        compatible = "zmk,physical-layout";
-        display-name = "core";
+    // Assign transform and kscan to the physical layout from core-layout.dtsi
+    &core_physical_layout {
         transform = <&default_transform>;
-
-         layout = <
-             RC(0,0) RC(0,1) RC(0,2)
-             RC(1,0) RC(1,1) RC(1,2)
-             RC(2,0) RC(2,1) RC(2,2)
-        >;
+        kscan = <&kscan0>;
     };
 };
 
