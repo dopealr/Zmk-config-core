@@ -39,6 +39,7 @@
     // ✅ Add physical layout section for ZMK Studio:
     physical_layout {
         compatible = "zmk,physical-layout";
+        display-name = "core";
 
          layout = <
              RC(0,0) RC(0,1) RC(0,2)
