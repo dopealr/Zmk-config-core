@@ -4,9 +4,8 @@
     core_physical_layout: core_physical_layout {
         compatible = "zmk,physical-layout";
         display-name = "Core";
-        transform = <&default_transform>;  // Required for ZMK Studio
+        transform = <&default_transform>;
 
-        // Define keys with physical attributes: reference, width, height, x, y, rotation
         keys = <
             &key_physical_attrs 100 100    0    0       0     0     0
             , &key_physical_attrs 100 100  100    0       0     0     0
