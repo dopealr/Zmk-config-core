@@ -1,0 +1,6 @@
+if SHIELD_CORE
+
+     config ZMK_KEYBOARD_NAME
+    default "core"
+
+endif
