@@ -4,6 +4,7 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
+        zmk,physical-layout = &physical_layout;
     };
 
     kscan0: kscan0 {
@@ -34,4 +35,43 @@
             RC(2,0) RC(2,1) RC(2,2)
         >;
     };
+
+    physical_layout: physical_layout {
+        compatible = "zmk,physical-layout";
+        display-name = "My Macropad";
+        width = <3>;
+        height = <3>;
+        key-positions = <
+            0  1  2
+            3  4  5
+            6  7  8
+        >;
+        key-names = <
+            K00 K01 K02
+            K10 K11 K12
+            K20 K21 K22
+        >;
+        key-sizes = <
+            1 1 1
+            1 1 1
+            1 1 1
+        >;
+        key-transforms = <
+            &default_transform &default_transform &default_transform
+            &default_transform &default_transform &default_transform
+            &default_transform &default_transform &default_transform
+        >;
+    };
+};
+
+&pro_micro_i2c {
+    status = "okay";
+};
+
+&pro_micro_spi {
+    status = "okay";
+};
+
+&pro_micro_serial {
+    status = "okay";
 };
