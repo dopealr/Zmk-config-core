@@ -26,7 +26,7 @@
 
         default_layer {
             bindings = <
-                &kp NUM_1 &kp NUM_2 &kp NUM_3
+                &studio_unlock&kp NUM_2 &kp NUM_3
                 &kp NUM_4 &kp NUM_5 &kp NUM_6
                 &kp NUM_7 &kp NUM_8 &mo (1)
             >;
