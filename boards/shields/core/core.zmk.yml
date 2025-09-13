@@ -1,0 +1,8 @@
+file_format: "1"
+id: core
+name: "Core"
+type: shield
+requires: [pro_micro]
+features:
+  - keys
+  - studio 

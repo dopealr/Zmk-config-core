@@ -1,0 +1,22 @@
+#include <physical_layouts.dtsi>
+
+/ {
+    core_physical_layout: core_physical_layout {
+        compatible = "zmk,physical-layout";
+        display-name = "Core";
+        
+        // Define keys with physical attributes (width, height, position, rotation)
+        // For a simple 3x3 grid, all keys are 100x100 units at 0,0,0 rotation
+        keys = <
+            &key_physical_attrs 100 100    0    0       0     0     0
+            , &key_physical_attrs 100 100  100    0       0     0     0
+            , &key_physical_attrs 100 100  200    0       0     0     0
+            , &key_physical_attrs 100 100    0  100       0     0     0
+            , &key_physical_attrs 100 100  100  100       0     0     0
+            , &key_physical_attrs 100 100  200  100       0     0     0
+            , &key_physical_attrs 100 100    0  200       0     0     0
+            , &key_physical_attrs 100 100  100  200       0     0     0
+            , &key_physical_attrs 100 100  200  200       0     0     0
+        >;
+    };
+};
