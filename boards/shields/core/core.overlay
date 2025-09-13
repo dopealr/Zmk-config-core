@@ -4,7 +4,6 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
-        zmk,physical-layout = &physical_layout;
     };
 
     kscan0: kscan0 {
@@ -34,6 +33,17 @@
             RC(1,0) RC(1,1) RC(1,2)
             RC(2,0) RC(2,1) RC(2,2)
         >;
-    };  
+    };
 };
 
+&pro_micro_i2c {
+    status = "okay";
+};
+
+&pro_micro_spi {
+    status = "okay";
+};
+
+&pro_micro_serial {
+    status = "okay";
+};
