@@ -36,11 +36,6 @@
             RC(2,0) RC(2,1) RC(2,2)
         >;
     };
-
-    &core_physical_layout {
-        transform = <&default_transform>;
-        kscan = <&kscan0>;
-    }  // <-- Remove semicolon
 };
 
 &pro_micro_i2c {
