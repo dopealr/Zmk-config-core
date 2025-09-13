@@ -1,6 +1,6 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
-{
+/ {
     compatible = "zmk,keymap";
 
     chosen {
