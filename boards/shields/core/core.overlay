@@ -40,6 +40,7 @@
     physical_layout {
         compatible = "zmk,physical-layout";
         display-name = "core";
+        transform = &default_transform;
 
          layout = <
              RC(0,0) RC(0,1) RC(0,2)
