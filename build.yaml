@@ -23,6 +23,6 @@ include:
     shield: core
     snippet: studio-rpc-usb-uart
     cmake-args:
-               -DCONFIG_BT=y
-               -DCONFIG_BT_PERIPHERAL=y
-               -DCONFIG_ZMK_STUDIO=y
+                -DCONFIG_BT=y
+                -DCONFIG_BT_PERIPHERAL=y
+                -DCONFIG_ZMK_STUDIO=y
