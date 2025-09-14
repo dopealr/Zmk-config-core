@@ -3,6 +3,10 @@
 #include <dt-bindings/zmk/keys.h>
 
  / {
+    behavior_studio_unlock {
+        compatible = "zmk,behavior-studio-unlock";
+    };
+
     combos {
         compatible = "zmk,combos";
 
@@ -63,9 +67,5 @@
             if-layers = <0 1>;
             then-layer = <2>;
         };
-    };
-
-    behavior_studio_unlock {
-        compatible = "zmk,behavior-studio-unlock";
     };
 };
