@@ -19,6 +19,13 @@
             layers = <0>;
             require-prior-idle-ms = <200>;
         };
+
+        unlock_combo {
+            key-positions = <2 3>;
+            bindings = <&behavior_studio_unlock>;
+            layers = <0>;
+            require-prior-idle-ms = <200>;
+        };
     };
 
     keymap {
@@ -28,15 +35,15 @@
             bindings = <
                 &kp Q     &kp W     &kp E
                 &kp A     &kp S     &kp D
-                &kp Z     &kp X     &mo (1)
+                &kp Z     &behavior_studio_unlock   &mo (1)
             >;
         };
 
         layer_1 {
             bindings = <
                 &bt BT_SEL (0)  &bt BT_SEL (1)  &bt BT_SEL (2)
-                &bt BT_CLR_ALL &kp SPACE     &kp ENTER
-                &kp C_VOL_DN  &kp C_VOL_UP   &mo (2)
+                &bt BT_CLR_ALL  &kp SPACE      &kp ENTER
+                &kp C_VOL_DN   &kp C_VOL_UP   &mo (2)
             >;
         };
 
@@ -56,5 +63,9 @@
             if-layers = <0 1>;
             then-layer = <2>;
         };
+    };
+
+    behavior_studio_unlock {
+        compatible = "zmk,behavior-studio-unlock";
     };
 };
