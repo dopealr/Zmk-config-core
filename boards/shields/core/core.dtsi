@@ -5,18 +5,18 @@
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
-        diode-direction = "row2col"; // change to "col2row" if your diodes are flipped
+        diode-direction = "row2col"; // flip to col2row if diodes reversed
 
         row-gpios
-            = <&gpio0 20 GPIO_ACTIVE_HIGH>
-            , <&gpio0 22 GPIO_ACTIVE_HIGH>
-            , <&gpio0 24 GPIO_ACTIVE_HIGH>
+            = <&pro_micro 20 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 22 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 24 GPIO_ACTIVE_HIGH>
             ;
 
         col-gpios 
-            = <&gpio0  6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>
-            , <&gpio0  8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>
-            , <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>
+            = <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>
+            , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>
+            , <&pro_micro 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>
             ;
     };
 
