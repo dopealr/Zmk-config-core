@@ -17,7 +17,7 @@
             , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
-        >;
+        };
     };
 
     default_transform: keymap_transform0 {
