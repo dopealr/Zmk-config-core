@@ -7,18 +7,17 @@
         wakeup-source;
 
         row-gpios
-           = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-           , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-           , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-          ;
+           = <&pro_micro 15 GPIO_ACTIVE_HIGH>
+           , <&pro_micro 16 GPIO_ACTIVE_HIGH>  
+           , <&pro_micro 19 GPIO_ACTIVE_HIGH>  
+           ;
 
         col-gpios 
-            = <&pro_micro 20 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 21 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 4  GPIO_ACTIVE_HIGH>
+            = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Added GPIO_PULL_DOWN
+            , <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Added GPIO_PULL_DOWN
+            , <&pro_micro 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Added GPIO_PULL_DOWN
             ;
     };
-
 
     default_transform: keymap_transform0 {
         compatible = "zmk,matrix-transform";
@@ -38,7 +37,7 @@
         kscan = <&kscan0>;
         transform = <&default_transform>;
 
-        keys = <  // Added < here
+        keys = <
             &key_physical_attrs 100 100    0    0     0     0     0
             , &key_physical_attrs 100 100  100    0     0     0     0
             , &key_physical_attrs 100 100  200    0     0     0     0
@@ -48,6 +47,6 @@
             , &key_physical_attrs 100 100    0  200     0     0     0
             , &key_physical_attrs 100 100  100  200     0     0     0
             , &key_physical_attrs 100 100  200  200     0     0     0
-        >;  // Added > here
+        >;
     };
 };
