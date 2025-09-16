@@ -29,7 +29,7 @@
 
         default_layer {
             bindings = <
-                &BT_CLR   &BT_CLR_ALL     &studio_unlock
+                &bt BT_CLR  &bt BT_CLR_ALL     &studio_unlock
                 &bt BT_SEL 0    &bt BT_SEL 1     &kp D
                 &kp Z     &kp G  &mo 1
             >;
