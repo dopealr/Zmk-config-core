@@ -65,19 +65,3 @@
         triggers-per-rotation = <4>;
     };
 };
-
-// --- Disable unused peripherals ---
-&i2c0 {
-    status = "disabled";
-};
-
-&spi0 {
-    status = "disabled";
-};
-
-&spi1 {
-    status = "disabled";
-};
-
-// --- Remove the problematic i2c0_default node ---
-/delete-node/ &i2c0_default;
