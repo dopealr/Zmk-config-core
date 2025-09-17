@@ -2,19 +2,6 @@
 #include <physical_layouts.dtsi>
 
 / {
-    // --- Disable unused peripherals to avoid binding errors ---
-    &i2c0 {
-        status = "disabled";
-    };
-
-    &spi0 {
-        status = "disabled";
-    };
-
-    &spi1 {
-        status = "disabled";
-    };
-
     // --- Key Scan (9 switches, GPIO direct) ---
     default_kscan: kscan {
         compatible = "zmk,kscan-gpio-direct";
@@ -46,9 +33,11 @@
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Core Layout";
+
         kscan = <&default_kscan>;
         transform = <&default_transform>;
-        keys = 
+
+        keys =
             <&key_physical_attrs 100 100    0    0 0 0 0>,
             <&key_physical_attrs 100 100  100    0 0 0 0>,
             <&key_physical_attrs 100 100  200    0 0 0 0>,
@@ -75,4 +64,17 @@
         sensors = <&left_encoder>;
         triggers-per-rotation = <4>;
     };
+};
+
+// --- Disable unused peripherals (placed outside the root node) ---
+&i2c0 {
+    status = "disabled";
+};
+
+&spi0 {
+    status = "disabled";
+};
+
+&spi1 {
+    status = "disabled";
 };
