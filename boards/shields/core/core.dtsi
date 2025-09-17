@@ -2,7 +2,7 @@
 #include <physical_layouts.dtsi>
 
 / {
-    // --- Key Scan (9 switches) ---
+    // --- Key Scan (9 switches, direct wiring) ---
     default_kscan: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "default_kscan";
@@ -19,17 +19,17 @@
             <&pro_micro 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // D2
     };
 
+    // --- Matrix Transform (1x9 direct scan) ---
     default_transform: keymap_transform0 {
         compatible = "zmk,matrix-transform";
         columns = <9>;
         rows = <1>;
-        map = <
-            RC(0,0) RC(0,1) RC(0,2)
-            RC(0,3) RC(0,4) RC(0,5)
-            RC(0,6) RC(0,7) RC(0,8)
-        >;
+        map = <RC(0,0) RC(0,1) RC(0,2)
+               RC(0,3) RC(0,4) RC(0,5)
+               RC(0,6) RC(0,7) RC(0,8)>;
     };
 
+    // --- Physical Layout (for Studio visualization) ---
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Core Layout";
@@ -54,13 +54,14 @@
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   // D9 = A
         b-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   // D10 = B
-        steps = <20>;   // typical EC11 is 24 steps/rev (adjust if yours differs)
+        steps = <20>;   // adjust to your encoder (typical EC11 = 20–24)
         status = "okay";
     };
 
+    // --- Sensor wrapper (so encoder can be mapped in keymap) ---
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder>;
-        triggers-per-rotation = <4>;  // 4 events per full turn (tweak for feel)
+        triggers-per-rotation = <4>;  // tweak feel (events per detent)
     };
 };
