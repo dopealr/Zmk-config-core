@@ -1,11 +1,23 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
 
-/ {
-    // --- Key Scan (9 switches, direct wiring) ---
+// --- Disable unused peripherals (fixes i2c0_default binding error) ---
+&i2c0 {
+    status = "disabled";
+};
+
+&spi0 {
+    status = "disabled";
+};
+
+&spi1 {
+    status = "disabled";
+};
+
+ / {
+    // --- Key Scan (9 switches, GPIO direct) ---
     default_kscan: kscan {
         compatible = "zmk,kscan-gpio-direct";
-        label = "default_kscan";
 
         input-gpios =
             <&pro_micro 1  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // D1
@@ -19,17 +31,19 @@
             <&pro_micro 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // D2
     };
 
-    // --- Matrix Transform (1x9 direct scan) ---
+    // --- Matrix transform (1 row × 9 cols) ---
     default_transform: keymap_transform0 {
         compatible = "zmk,matrix-transform";
         columns = <9>;
         rows = <1>;
-        map = <RC(0,0) RC(0,1) RC(0,2)
-               RC(0,3) RC(0,4) RC(0,5)
-               RC(0,6) RC(0,7) RC(0,8)>;
+        map = <
+            RC(0,0) RC(0,1) RC(0,2)
+            RC(0,3) RC(0,4) RC(0,5)
+            RC(0,6) RC(0,7) RC(0,8)
+        >;
     };
 
-    // --- Physical Layout (for Studio visualization) ---
+    // --- Physical Layout (optional for Studio / VIA-like UI) ---
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Core Layout";
@@ -49,19 +63,19 @@
             <&key_physical_attrs 100 100  200  200 0 0 0>;   /* Switch 9 */
     };
 
-    // --- EC11 Encoder ---
+    // --- EC11 Encoder (A = D9, B = D10) ---
     left_encoder: encoder_left {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   // D9 = A
-        b-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   // D10 = B
-        steps = <20>;   // adjust to your encoder (typical EC11 = 20–24)
+        a-gpios = <&pro_micro 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   // A = D9
+        b-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   // B = D10
+        steps = <20>;   // EC11 typical = 20–24 (adjust to match your part)
         status = "okay";
     };
 
-    // --- Sensor wrapper (so encoder can be mapped in keymap) ---
+    // --- Sensor node (link encoders into ZMK) ---
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder>;
-        triggers-per-rotation = <4>;  // tweak feel (events per detent)
+        triggers-per-rotation = <4>;  // Events per full turn
     };
 };
