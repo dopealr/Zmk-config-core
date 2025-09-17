@@ -2,28 +2,31 @@
 #include <physical_layouts.dtsi>
 
 / {
+    // --- Key Scan (9 switches) ---
     default_kscan: kscan {
-    compatible = "zmk,kscan-gpio-direct";
-    label = "default_kscan";
+        compatible = "zmk,kscan-gpio-direct";
+        label = "default_kscan";
 
-    input-gpios =
-        <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-        <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-        <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-        <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-        <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-        <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-        <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-        <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-};
+        input-gpios =
+            <&pro_micro 1  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // D1
+            <&pro_micro 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // D0
+            <&pro_micro 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // D3
+            <&pro_micro 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // D4
+            <&pro_micro 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // D5
+            <&pro_micro 5  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // D6
+            <&pro_micro 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // D7
+            <&pro_micro 7  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // D8
+            <&pro_micro 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // D2
+    };
 
     default_transform: keymap_transform0 {
         compatible = "zmk,matrix-transform";
         columns = <9>;
         rows = <1>;
         map = <
-            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4)
-            RC(0,5) RC(0,6) RC(0,7) RC(0,8)
+            RC(0,0) RC(0,1) RC(0,2)
+            RC(0,3) RC(0,4) RC(0,5)
+            RC(0,6) RC(0,7) RC(0,8)
         >;
     };
 
@@ -31,7 +34,7 @@
         compatible = "zmk,physical-layout";
         display-name = "Core Layout";
 
-        kscan = <&kscan0>;
+        kscan = <&default_kscan>;
         transform = <&default_transform>;
 
         keys =
@@ -44,5 +47,20 @@
             <&key_physical_attrs 100 100    0  200 0 0 0>,   /* Switch 7 */
             <&key_physical_attrs 100 100  100  200 0 0 0>,   /* Switch 8 */
             <&key_physical_attrs 100 100  200  200 0 0 0>;   /* Switch 9 */
+    };
+
+    // --- EC11 Encoder ---
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        a-gpios = <&pro_micro 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   // D9 = A
+        b-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   // D10 = B
+        steps = <20>;   // typical EC11 is 24 steps/rev (adjust if yours differs)
+        status = "okay";
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <4>;  // 4 events per full turn (tweak for feel)
     };
 };
