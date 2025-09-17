@@ -66,11 +66,6 @@
     };
 };
 
-// --- Fix the pin controller binding issue ---
-&pincontrolller {
-    #binding-cells = <2>;
-};
-
 // --- Disable unused peripherals ---
 &i2c0 {
     status = "disabled";
@@ -84,5 +79,5 @@
     status = "disabled";
 };
 
-// --- Alternative: Remove the problematic pin configuration ---
+// --- Remove the problematic i2c0_default node ---
 /delete-node/ &i2c0_default;
