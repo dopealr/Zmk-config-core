@@ -1,25 +1,24 @@
 #include <dt-bindings/zmk/matrix_transform.h>
-#include <physical_layouts.dtsi>
 
 / {
     chosen {
         zmk,kscan = &default_kscan;
         zmk,matrix_transform = &default_transform;
-        zmk,physical-layout = &physical_layout0;    /* must match label below */
+        zmk,physical-layout = &physical_layout0;
     };
 
     default_kscan: kscan {
         compatible = "zmk,kscan-gpio-direct";
         input-gpios =
-            <&gpio0 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* key 0 */
-            <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* key 1 */
-            <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* key 2 */
-            <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* key 3 */
-            <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* key 4 */
-            <&gpio0  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* key 5 */
-            <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* key 6 */
-            <&gpio0  2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* key 7 */
-            <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* key 8 */
+            <&gpio0 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&gpio0  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&gpio0  2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     };
 
     default_transform: keymap_transform0 {
@@ -37,7 +36,6 @@
         compatible = "zmk,key-physical-attrs";
     };
 
-    /* label must equal the phandle used in /chosen above */
     physical_layout0: physical_layout0 {
         compatible = "zmk,physical-layout";
         display-name = "Core Layout";
@@ -60,7 +58,7 @@
         compatible = "alps,ec11";
         a-gpios = <&gpio1  6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <80>;
+        steps-per-rotation = <80>;   /* FIXED */
         status = "okay";
     };
 
