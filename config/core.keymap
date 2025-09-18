@@ -41,9 +41,9 @@
 
         layer_1 {
             bindings = <
-                &kp 1   &kp 2   &kp 3
-                &kp 4   &kp 5   &kp 6
-                &kp 7   &kp 8   &mo 2
+                &kp G  &kp H    &kp I
+                &kp J   &kp K  &kp L
+                &kp M   &kp N   &mo O
             >;
 
             sensor-bindings = <
