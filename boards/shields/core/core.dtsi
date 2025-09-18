@@ -72,7 +72,6 @@
     };
 };
 
-/* === I²C Fix: define i2c0_default with #pinctrl-cells === */
 &pinctrl {
     i2c0_default: i2c0_default {
         group1 {
@@ -82,10 +81,19 @@
         };
         #pinctrl-cells = <1>;
     };
+
+    i2c0_sleep: i2c0_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 26)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 27)>;
+        };
+        #pinctrl-cells = <1>;
+    };
 };
 
 &i2c0 {
     pinctrl-0 = <&i2c0_default>;
-    pinctrl-names = "default";
+    pinctrl-1 = <&i2c0_sleep>;
+    pinctrl-names = "default", "sleep";
     status = "okay";
 };
