@@ -37,7 +37,7 @@
         compatible = "zmk,key-physical-attrs";
     };
 
-    physical_layout0: physical_layout_0 {
+    physical_layout0: physical_layout0 {
         compatible = "zmk,physical-layout";
         display-name = "Core Layout";
         kscan = <&default_kscan>;
