@@ -33,26 +33,28 @@
     };
 
     key_physical_attrs: key_physical_attrs {
-        compatible = "zmk,key-physical-attrs";
-    };
+    compatible = "zmk,key-physical-attrs";
+    #key-cells = <7>;
+};
 
-    physical_layout0: physical_layout0 {
-        compatible = "zmk,physical-layout";
-        display-name = "Core Layout";
-        kscan = <&default_kscan>;
-        transform = <&default_transform>;
+physical_layout0: physical_layout0 {
+    compatible = "zmk,physical-layout";
+    display-name = "Core Layout";
+    kscan = <&default_kscan>;
+    transform = <&default_transform>;
 
-        keys =
-            <&key_physical_attrs 100 100    0    0 0 0 0>,
-            <&key_physical_attrs 100 100  100    0 0 0 0>,
-            <&key_physical_attrs 100 100  200    0 0 0 0>,
-            <&key_physical_attrs 100 100    0  100 0 0 0>,
-            <&key_physical_attrs 100 100  100  100 0 0 0>,
-            <&key_physical_attrs 100 100  200  100 0 0 0>,
-            <&key_physical_attrs 100 100    0  200 0 0 0>,
-            <&key_physical_attrs 100 100  100  200 0 0 0>,
-            <&key_physical_attrs 100 100  200  200 0 0 0>;
-    };
+    keys =
+        <&key_physical_attrs 100 100    0    0 0 0 0>,
+        <&key_physical_attrs 100 100  100    0 0 0 0>,
+        <&key_physical_attrs 100 100  200    0 0 0 0>,
+        <&key_physical_attrs 100 100    0  100 0 0 0>,
+        <&key_physical_attrs 100 100  100  100 0 0 0>,
+        <&key_physical_attrs 100 100  200  100 0 0 0>,
+        <&key_physical_attrs 100 100    0  200 0 0 0>,
+        <&key_physical_attrs 100 100  100  200 0 0 0>,
+        <&key_physical_attrs 100 100  200  200 0 0 0>;
+};
+
 
     left_encoder: encoder_left {
         compatible = "alps,ec11";
