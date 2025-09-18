@@ -1,0 +1,17 @@
+/ {
+    chosen {
+        zmk,keyboard = &kscan0;
+        zmk,physical-layout = &default_layout;
+    };
+
+    default_layout: keymap {
+        compatible = "zmk,keymap";
+
+        label = "Default Layout";
+
+        bindings = <
+            &kp A &kp B &kp C
+            &kp D &kp E &kp F
+        >;
+    };
+};
