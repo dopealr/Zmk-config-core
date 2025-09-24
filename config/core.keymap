@@ -9,32 +9,36 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // Layer 0 → Red
+        // Layer 0 → Default (Bluetooth connectivity + Studio Unlock)
         default_layer {
-            bindings = <&studio_unlock &kp B      &kp C
-                        &kp D      &kp E      &kp F
-                        &kp G      &kp H      &to 1>;
+            bindings = <&studio_unlock   &bt BT_SEL 0    &bt BT_SEL 1
+                        &bt BT_SEL 2     &bt BT_SEL 3    &bt BT_CLR
+                        &bt BT_CLR_ALL   &bt BT_NXT      &bt BT_PRV
+                        &to 1>;
         };
 
-        // Layer 1 → Green
+        // Layer 1 → Green (Navigation)
         layer_1 {
             bindings = <&kp LEFT   &kp DOWN   &kp UP
                         &kp RIGHT  &kp HOME   &kp END
-                        &kp PG_UP  &kp PG_DN  &to 2>;
+                        &kp PG_UP  &kp PG_DN  &trans
+                        &to 2>;
         };
 
-        // Layer 2 → Blue
+        // Layer 2 → Blue (Media controls)
         layer_2 {
             bindings = <&kp C_PLAY_PAUSE  &kp C_PREV   &kp C_NEXT
                         &kp C_MUTE        &kp C_VOL_DN &kp C_VOL_UP
-                        &kp EXCLAMATION   &kp QUESTION &to 3>;
+                        &kp EXCLAMATION   &kp QUESTION &trans
+                        &to 3>;
         };
 
-        // Layer 3 → White (Bluetooth functions)
+        // Layer 3 → Red (Letter keys)
         layer_3 {
-            bindings = <&bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2
-                        &bt BT_SEL 3    &bt BT_CLR      &bt BT_CLR_ALL
-                        &trans          &trans          &to 0>;
+            bindings = <&kp B      &kp C      &kp D
+                        &kp E      &kp F      &kp G
+                        &kp H      &trans     &trans
+                        &to 0>;
         };
     };
 };
