@@ -1,49 +1,40 @@
+#define ZMK_BEHAVIORS_KEEP_SK
+#define ZMK_BEHAVIORS_KEEP_MT
+#define ZMK_BEHAVIORS_KEEP_KT
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
-        // --- Layer 0: Base Layer (with Bluetooth) ---
+        // Layer 0 → Red
         default_layer {
-            display-name = "Base";
-            bindings = <
-                &kp Q       &kp W       &mo 1        // Row 1: Layer switch on col 3
-                &kp A       &kp S       &bt BT_CLR   // Row 2: Bluetooth clear
-                &kp Z       &kp X       &bt BT_NXT   // Row 3: Bluetooth next
-            >;
+            bindings = <&studio_unlock &kp B      &kp C
+                        &kp D      &kp E      &kp F
+                        &kp G      &kp H      &to 1>;
         };
 
-        // --- Layer 1: Navigation ---
+        // Layer 1 → Green
         layer_1 {
-            display-name = "Nav";
-            bindings = <
-                &kp LEFT    &kp DOWN    &mo 2        // Navigate + switch to layer 2
-                &kp RIGHT   &kp UP      &kp HOME
-                &kp PG_UP   &kp PG_DN   &kp END
-            >;
+            bindings = <&kp LEFT   &kp DOWN   &kp UP
+                        &kp RIGHT  &kp HOME   &kp END
+                        &kp PG_UP  &kp PG_DN  &to 2>;
         };
 
-        // --- Layer 2: Media ---
+        // Layer 2 → Blue
         layer_2 {
-            display-name = "Media";
-            bindings = <
-                &kp C_PREV      &kp C_PLAY_PAUSE  &mo 3        // Media controls + switch to layer 3
-                &kp C_VOL_DN    &kp C_VOL_UP      &kp C_MUTE
-                &kp C_NEXT      &kp C_STOP        &bt BT_PRV
-            >;
+            bindings = <&kp C_PLAY_PAUSE  &kp C_PREV   &kp C_NEXT
+                        &kp C_MUTE        &kp C_VOL_DN &kp C_VOL_UP
+                        &kp EXCLAMATION   &kp QUESTION &to 3>;
         };
 
-        // --- Layer 3: Numbers & Functions ---
+        // Layer 3 → White (Bluetooth functions)
         layer_3 {
-            display-name = "Numbers";
-            bindings = <
-                &kp N1      &kp N2      &to 0        // Numbers + return to base
-                &kp N3      &kp N4      &kp N5
-                &kp N6      &kp N7      &kp N8
-            >;
+            bindings = <&bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2
+                        &bt BT_SEL 3    &bt BT_CLR      &bt BT_CLR_ALL
+                        &trans          &trans          &to 0>;
         };
     };
 };
