@@ -3,37 +3,16 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-    behaviors {
-        // === Macros ===
-        copy: macro_copy {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LCTRL &kp C>;
-        };
-
-        paste: macro_paste {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LCTRL &kp V>;
-        };
-
-        save: macro_save {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LCTRL &kp S>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
-        // --- Layer 0: Default ---
+        // --- Layer 0: Base Layer (with Bluetooth) ---
         default_layer {
             display-name = "Base";
             bindings = <
-                &copy   &paste   &mo 1
-                &save   &bt BT_CLR  &bt BT_NXT
-                &kp A   &kp B    &kp C
+                &kp Q       &kp W       &mo 1        // Row 1: Layer switch on col 3
+                &kp A       &kp S       &bt BT_CLR   // Row 2: Bluetooth clear
+                &kp Z       &kp X       &bt BT_NXT   // Row 3: Bluetooth next
             >;
         };
 
@@ -41,9 +20,9 @@
         layer_1 {
             display-name = "Nav";
             bindings = <
-                &kp LEFT   &kp DOWN   &mo 2
-                &kp RIGHT  &kp HOME   &kp END
-                &kp PG_UP  &kp PG_DN  &kp UP
+                &kp LEFT    &kp DOWN    &mo 2        // Navigate + switch to layer 2
+                &kp RIGHT   &kp UP      &kp HOME
+                &kp PG_UP   &kp PG_DN   &kp END
             >;
         };
 
@@ -51,19 +30,19 @@
         layer_2 {
             display-name = "Media";
             bindings = <
-                &kp C_PLAY_PAUSE  &kp C_PREV   &tog 3
-                &kp C_MUTE        &kp C_VOL_DN &kp C_VOL_UP
-                &kp C_NEXT        &kp C_STOP   &to 0
+                &kp C_PREV      &kp C_PLAY_PAUSE  &mo 3        // Media controls + switch to layer 3
+                &kp C_VOL_DN    &kp C_VOL_UP      &kp C_MUTE
+                &kp C_NEXT      &kp C_STOP        &bt BT_PRV
             >;
         };
 
-        // --- Layer 3: Extra ---
+        // --- Layer 3: Numbers & Functions ---
         layer_3 {
-            display-name = "Extra";
+            display-name = "Numbers";
             bindings = <
-                &kp X  &kp Y  &to 0
-                &kp Z  &kp N1 &kp N2
-                &kp N3 &kp N4 &kp N5
+                &kp N1      &kp N2      &to 0        // Numbers + return to base
+                &kp N3      &kp N4      &kp N5
+                &kp N6      &kp N7      &kp N8
             >;
         };
     };
